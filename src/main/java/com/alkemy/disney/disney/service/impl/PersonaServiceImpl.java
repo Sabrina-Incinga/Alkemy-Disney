@@ -11,10 +11,12 @@ import com.alkemy.disney.disney.repository.specification.PersonaSpecification;
 import com.alkemy.disney.disney.service.MovieOrTVSerieService;
 import com.alkemy.disney.disney.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PersonaServiceImpl implements PersonaService {
 
     @Autowired

@@ -4,6 +4,7 @@ import com.alkemy.disney.disney.dto.PersonaFiltersDTO;
 import com.alkemy.disney.disney.entity.MovieOrTVSerieEntity;
 import com.alkemy.disney.disney.entity.PersonaEntity;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -14,7 +15,7 @@ import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Component
 public class PersonaSpecification {
 
 

@@ -6,6 +6,7 @@ import com.alkemy.disney.disney.dto.PersonaBasicDTO;
 import com.alkemy.disney.disney.dto.PersonaDTO;
 import com.alkemy.disney.disney.entity.PersonaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.Set;
 public class PersonaMapper {
 
     @Autowired
+    @Lazy
     MovieOrTVSerieMapper movieOrTVSerieMapper;
 
     public PersonaDTO PersonaEntityToDTO(PersonaEntity entity, boolean loadMovies) {
