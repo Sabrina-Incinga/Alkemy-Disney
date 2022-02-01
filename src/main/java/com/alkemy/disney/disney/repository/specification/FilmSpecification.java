@@ -3,6 +3,7 @@ package com.alkemy.disney.disney.repository.specification;
 import com.alkemy.disney.disney.dto.FilmFiltersDTO;
 import com.alkemy.disney.disney.entity.MovieOrTVSerieEntity;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 
@@ -10,6 +11,7 @@ import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class FilmSpecification {
     public static Specification<MovieOrTVSerieEntity> getByFilters(FilmFiltersDTO filtersDTO) {
 

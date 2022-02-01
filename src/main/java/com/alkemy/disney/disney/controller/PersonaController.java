@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("Personas")
+@RequestMapping("/Personas")
 public class PersonaController {
 
     @Autowired
@@ -34,6 +34,7 @@ public class PersonaController {
             @RequestParam(required = false) String name,
             @RequestParam(required = false) Byte age,
             @RequestParam(required = false) Short weight,
+
             @RequestParam(required = false) List<Long> movies
     ){
         List<PersonaDTO> personas = personaService.getByFilters(name, age, weight, movies);
