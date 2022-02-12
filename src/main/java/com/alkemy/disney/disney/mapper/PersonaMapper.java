@@ -4,7 +4,7 @@ package com.alkemy.disney.disney.mapper;
 import com.alkemy.disney.disney.dto.MovieOrTVSerieDTO;
 import com.alkemy.disney.disney.dto.PersonaBasicDTO;
 import com.alkemy.disney.disney.dto.PersonaDTO;
-import com.alkemy.disney.disney.entity.PersonaEntity;
+import com.alkemy.disney.disney.entity.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,7 @@ public class PersonaMapper {
     @Lazy
     MovieOrTVSerieMapper movieOrTVSerieMapper;
 
-    public PersonaDTO PersonaEntityToDTO(PersonaEntity entity, boolean loadMovies) {
+    public PersonaDTO PersonaEntityToDTO(Persona entity, boolean loadMovies) {
         PersonaDTO dto = new PersonaDTO();
         dto.setId(entity.getId());
         dto.setImage(entity.getImage());
@@ -36,8 +36,8 @@ public class PersonaMapper {
         return dto;
     }
 
-    public PersonaEntity personaDTOToEntity(PersonaDTO dto){
-        PersonaEntity entity = new PersonaEntity();
+    public Persona personaDTOToEntity(PersonaDTO dto){
+        Persona entity = new Persona();
         entity.setImage(dto.getImage());
         entity.setName(dto.getName());
         entity.setAge(dto.getAge());
@@ -46,7 +46,7 @@ public class PersonaMapper {
         return entity;
     }
 
-    public PersonaBasicDTO personaEntityToBasicDTO(PersonaEntity entity){
+    public PersonaBasicDTO personaEntityToBasicDTO(Persona entity){
         PersonaBasicDTO dto = new PersonaBasicDTO();
         dto.setId(entity.getId());
         dto.setImage(entity.getImage());
@@ -54,31 +54,31 @@ public class PersonaMapper {
         return dto;
     }
 
-    public List<PersonaDTO> personaEntityListToDTOList(List<PersonaEntity> entities, boolean loadMovies){
+    public List<PersonaDTO> personaEntityListToDTOList(List<Persona> entities, boolean loadMovies){
         List<PersonaDTO> dtos= new ArrayList<>();
-        for (PersonaEntity entity : entities){
+        for (Persona entity : entities){
             dtos.add(PersonaEntityToDTO(entity,loadMovies));
         }
         return dtos;
     }
 
-    public Set<PersonaEntity> personaDTOListToEntityList(List<PersonaDTO> dtos) {
-        Set<PersonaEntity> entities = new HashSet<>();
+    public Set<Persona> personaDTOListToEntityList(List<PersonaDTO> dtos) {
+        Set<Persona> entities = new HashSet<>();
         for (PersonaDTO dto : dtos){
             entities.add(personaDTOToEntity(dto));
         }
         return entities;
     }
 
-    public List<PersonaBasicDTO> personaEntityListToBasicDTOList(List<PersonaEntity> entities){
+    public List<PersonaBasicDTO> personaEntityListToBasicDTOList(List<Persona> entities){
         List<PersonaBasicDTO> dtos = new ArrayList<>();
-        for (PersonaEntity entity : entities){
+        for (Persona entity : entities){
             dtos.add(personaEntityToBasicDTO(entity));
         }
         return dtos;
     }
 
-    public void personaEntityRefreshValues(PersonaEntity entity, PersonaDTO persona) {
+    public void personaEntityRefreshValues(Persona entity, PersonaDTO persona) {
         entity.setImage(persona.getImage());
         entity.setName(persona.getName());
         entity.setAge(persona.getAge());

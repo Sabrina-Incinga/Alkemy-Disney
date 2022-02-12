@@ -19,7 +19,7 @@ import java.util.Set;
 @SQLDelete(sql = "UPDATE Movie_TVSerie set deleted = true WHERE id=?")
 @Where(clause = "deleted=false")
 
-public class MovieOrTVSerieEntity {
+public class MovieOrTVSerie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class MovieOrTVSerieEntity {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "genre_id")
-    private GenreEntity genre;
+    private Genre genre;
 
     private Long genreID;
 
@@ -48,7 +48,7 @@ public class MovieOrTVSerieEntity {
             name = "movie_TVserie_persona",
             joinColumns = @JoinColumn(name = "movie_TVserie_id"),
             inverseJoinColumns = @JoinColumn(name = "persona_id"))
-    private Set<PersonaEntity> personas = new HashSet<>();
+    private Set<Persona> personas = new HashSet<>();
 
     private boolean deleted = Boolean.FALSE;
 

@@ -1,6 +1,6 @@
 package com.alkemy.disney.disney.dto;
 
-import com.alkemy.disney.disney.entity.GenreEntity;
+import com.alkemy.disney.disney.entity.Genre;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +15,7 @@ public class MovieOrTVSerieDTO {
     private String title;
     private String creationDate;
     private Byte rating;
-    private GenreEntity genre;
+    private Genre genre;
     private List<PersonaDTO> personas;
 
 }

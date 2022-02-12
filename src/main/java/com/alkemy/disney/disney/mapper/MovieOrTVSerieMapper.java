@@ -3,8 +3,8 @@ package com.alkemy.disney.disney.mapper;
 
 import com.alkemy.disney.disney.dto.MovieOrTVSerieDTO;
 import com.alkemy.disney.disney.dto.PersonaDTO;
-import com.alkemy.disney.disney.entity.MovieOrTVSerieEntity;
-import com.alkemy.disney.disney.entity.PersonaEntity;
+import com.alkemy.disney.disney.entity.MovieOrTVSerie;
+import com.alkemy.disney.disney.entity.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +20,7 @@ public class MovieOrTVSerieMapper {
     @Autowired
     PersonaMapper personaMapper;
 
-    public MovieOrTVSerieDTO movieOrTVSerieEntityToDTO(MovieOrTVSerieEntity entity, boolean loadPersonas){
+    public MovieOrTVSerieDTO movieOrTVSerieEntityToDTO(MovieOrTVSerie entity, boolean loadPersonas){
         MovieOrTVSerieDTO dto = new MovieOrTVSerieDTO();
         dto.setId(entity.getId());
         dto.setImage(entity.getImage());
@@ -29,28 +29,28 @@ public class MovieOrTVSerieMapper {
         dto.setRating(entity.getRating());
         dto.setGenre(entity.getGenre());
         if(loadPersonas){
-            List<PersonaDTO> personaDTOS = this.personaMapper.personaEntityListToDTOList((List<PersonaEntity>) entity.getPersonas(), false);
+            List<PersonaDTO> personaDTOS = this.personaMapper.personaEntityListToDTOList((List<Persona>) entity.getPersonas(), false);
             dto.setPersonas(personaDTOS);
         }
 
         return dto;
     }
 
-    public MovieOrTVSerieEntity movieOrTVSerieDTOToEntity(MovieOrTVSerieDTO dto){
-        MovieOrTVSerieEntity entity = new MovieOrTVSerieEntity();
+    public MovieOrTVSerie movieOrTVSerieDTOToEntity(MovieOrTVSerieDTO dto){
+        MovieOrTVSerie entity = new MovieOrTVSerie();
         entity.setImage(dto.getImage());
         entity.setTitle(dto.getTitle());
         entity.setCreationDate(stringToLocalDate(dto.getCreationDate()));
         entity.setRating(dto.getRating());
         entity.setGenre(dto.getGenre());
-        Set<PersonaEntity> personas = this.personaMapper.personaDTOListToEntityList(dto.getPersonas());
+        Set<Persona> personas = this.personaMapper.personaDTOListToEntityList(dto.getPersonas());
         entity.setPersonas(personas);
         return entity;
     }
 
-    public List<MovieOrTVSerieDTO> movieOrTVSerieEntityListToDTOList(List<MovieOrTVSerieEntity> entities, boolean loadPersonas) {
+    public List<MovieOrTVSerieDTO> movieOrTVSerieEntityListToDTOList(List<MovieOrTVSerie> entities, boolean loadPersonas) {
         List<MovieOrTVSerieDTO> movieOrTVSerieDTOList = new ArrayList<>();
-        for (MovieOrTVSerieEntity entity : entities){
+        for (MovieOrTVSerie entity : entities){
             movieOrTVSerieDTOList.add(movieOrTVSerieEntityToDTO(entity, loadPersonas));
         }
         return movieOrTVSerieDTOList;
@@ -63,7 +63,7 @@ public class MovieOrTVSerieMapper {
     }
 
 
-    public void filmEntityRefreshValues(MovieOrTVSerieEntity entity, MovieOrTVSerieDTO film) {
+    public void filmEntityRefreshValues(MovieOrTVSerie entity, MovieOrTVSerieDTO film) {
         entity.setImage(film.getImage());
         entity.setGenre(film.getGenre());
         entity.setTitle(film.getTitle());

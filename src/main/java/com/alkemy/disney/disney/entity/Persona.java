@@ -10,14 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "persona")
 @Getter
 @Setter
 @SQLDelete(sql = "UPDATE persona set deleted = true WHERE id=?")
 @Where(clause = "deleted=false")
 
 
-public class PersonaEntity {
+public class Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +28,7 @@ public class PersonaEntity {
     private String story;
 
     @ManyToMany(mappedBy = "personas", cascade = CascadeType.MERGE)
-    private List<MovieOrTVSerieEntity> movieOrTVSeries = new ArrayList<>();
+    private List<MovieOrTVSerie> movieOrTVSeries = new ArrayList<>();
 
     private boolean deleted = Boolean.FALSE;
     

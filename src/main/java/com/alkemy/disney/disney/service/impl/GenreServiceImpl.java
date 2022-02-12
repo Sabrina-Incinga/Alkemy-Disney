@@ -1,7 +1,7 @@
 package com.alkemy.disney.disney.service.impl;
 
 import com.alkemy.disney.disney.dto.GenreDTO;
-import com.alkemy.disney.disney.entity.GenreEntity;
+import com.alkemy.disney.disney.entity.Genre;
 import com.alkemy.disney.disney.mapper.GenreMapper;
 import com.alkemy.disney.disney.repository.GenreRepository;
 import com.alkemy.disney.disney.service.GenreService;
@@ -19,15 +19,15 @@ public class GenreServiceImpl implements GenreService {
     private GenreRepository genreRepository;
 
     public GenreDTO save(GenreDTO dto){
-        GenreEntity entity = genreMapper.genreDTOToEntity(dto);
-        GenreEntity savedEntity = genreRepository.save(entity);
+        Genre entity = genreMapper.genreDTOToEntity(dto);
+        Genre savedEntity = genreRepository.save(entity);
         GenreDTO result = genreMapper.genreEntityToDTO(savedEntity);
         return result;
     }
 
     @Override
     public List<GenreDTO> getAllGenres() {
-        List<GenreEntity> entities = genreRepository.findAll();
+        List<Genre> entities = genreRepository.findAll();
         List<GenreDTO> response = genreMapper.genreEntityListToDTOList(entities);
         return response;
     }

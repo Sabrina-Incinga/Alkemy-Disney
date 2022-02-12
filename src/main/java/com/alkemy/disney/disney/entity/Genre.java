@@ -8,12 +8,11 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Genre")
 @Getter
 @Setter
 @SQLDelete(sql = "UPDATE genre set deleted = true WHERE id=?")
 @Where(clause = "deleted=false")
-public class GenreEntity {
+public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
